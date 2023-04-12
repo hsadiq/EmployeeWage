@@ -21,7 +21,7 @@ public class EmpWage {
         System.out.println("Employee Daily wage is: "+ wage);
 
         //Calculating PartTime UC-3
-/*
+
         int  half_day= 4;
 
         int wage1= (hour_wage * half_day);
@@ -33,7 +33,7 @@ public class EmpWage {
             case 2:
                 System.out.println("Employee Part Time Wage is: "+ wage1);
         }
-*/
+
 
 
     }
