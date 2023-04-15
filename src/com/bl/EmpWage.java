@@ -1,7 +1,5 @@
 package com.bl;
 
-import java.util.Scanner;
-
 public class EmpWage {
 
     public static final int Part_time =1;
@@ -20,9 +18,6 @@ public class EmpWage {
             System.out.println("Employee is Absent");
         }
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter your work hour: ");
-        int ent = sc.nextInt();
 
 
         //Calculating Wage Per Hour UC-2
@@ -43,6 +38,8 @@ public class EmpWage {
 
         int EmpCheck =(int) Math.floor(Math.random()* 10) % 3;
 
+        //Using Switch Cases UC-4
+
         switch (EmpCheck){
             case Part_time:
                 Emp_Hour = 4;
@@ -55,7 +52,6 @@ public class EmpWage {
         }
         Emp_wage = Emp_Hour * hour_wage;
         System.out.println("Your Wage: "+Emp_wage);
-
 
 
     }
