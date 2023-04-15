@@ -53,6 +53,18 @@ public class EmpWage {
         Emp_wage = Emp_Hour * hour_wage;
         System.out.println("Your Wage: "+Emp_wage);
 
+        //Calculating Wage for Month UC-5
+
+        int work_days = 20;
+
+        int one_day = 160;
+
+        int Monthly_Wage = work_days * one_day;
+
+        System.out.println("Monthly Salary: "+ Monthly_Wage);
+
+
+
 
     }
 }
