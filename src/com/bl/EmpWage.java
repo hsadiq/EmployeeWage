@@ -63,7 +63,11 @@ public class EmpWage {
 
         System.out.println("Monthly Salary: "+ Monthly_Wage);
 
+        //Calculate Wage According Working Hour UC-6
 
+        int Monthly_Working_Hours = 100;
+
+        System.out.println("Wage According To Hour is: "+ Monthly_Working_Hours);
 
 
     }
