@@ -1,15 +1,11 @@
 package com.bl;
 
-public class EmpWage {
+public class EmpWage{
 
     public static final int Part_time =1;
     public static final int Full_time =2;
-    public static final int Working_Days=2;
-    public static final int Monthly_Hour=100;
-    public static final int Per_Hour_Salary=20;
 
-    public static int CalcWage(){
-        int empHour=0;
+    public static int CalcWage(String Company, int Working_Days, int Monthly_Hour, int Per_Hour_Salary){
         int totalHour=0;
         int totalWorkingDays=0;
 
@@ -30,18 +26,19 @@ public class EmpWage {
                     break;
             }
             totalWorkingDays += totalHour;
-            System.out.println("Day: " + totalWorkingDays + " Hour: " + totalHour);
         }
         int totalWage = totalHour * Per_Hour_Salary;
+        System.out.println("Total Employee Salary for " + Company + " is: " + totalWage + "$");
         return totalWage;
-
-
     }
 
     public static void main(String[] args) {
 
         System.out.println("Welcome to Employee Wage Computation");
-        CalcWage();
-        System.out.println("Total Wage is: " + CalcWage());
+        CalcWage("Infosys", 2,10,20);
+        CalcWage("Bridgelabz", 5, 80, 40);
+        CalcWage("Tesla", 12,60, 100);
+
+
     }
 }
