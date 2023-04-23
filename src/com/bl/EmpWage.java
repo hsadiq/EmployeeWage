@@ -2,20 +2,29 @@ package com.bl;
 
 public class EmpWage {
 
-    public static final int Part_time =1;
-    public static final int Full_time =2;
-    public static final int Working_Days=2;
-    public static final int Monthly_Hour=100;
-    public static final int Per_Hour_Salary=20;
+    public static final int Part_time = 1;
+    public static final int Full_time = 2;
+    private final String Company;
+    private final int working_days;
+    private final int monthly_hour;
+    private final int Per_hour_salary;
 
-    public static int CalcWage(){
-        int empHour=0;
-        int totalHour=0;
-        int totalWorkingDays=0;
+    private int totalWage;
 
-        int empCheck = (int)(Math.random() * 10) % 3;
+    public EmpWage(String company, int workingDays, int monthlyHour, int perHourSalary) {
+        this.Company = company;
+        this.working_days = workingDays;
+        this.monthly_hour = monthlyHour;
+        this.Per_hour_salary = perHourSalary;
+    }
 
-        while (totalWorkingDays<=Working_Days && totalHour<=Monthly_Hour) {
+    public void CalcWage(){
+        int totalHour = 0;
+        int totalWorkingDays = 0;
+
+        int empCheck = (int) (Math.random() * 10) % 3;
+
+        while (totalWorkingDays <= working_days && totalHour < monthly_hour) {
             totalWorkingDays++;
 
             switch (empCheck) {
@@ -30,18 +39,21 @@ public class EmpWage {
                     break;
             }
             totalWorkingDays += totalHour;
-            System.out.println("Day: " + totalWorkingDays + " Hour: " + totalHour);
         }
-        int totalWage = totalHour * Per_Hour_Salary;
-        return totalWage;
+        int totalWage = totalHour * Per_hour_salary;
+    }
 
 
+    public String toString(){
+        return "Total Employee Wage for Comapany: " + Company+ " is:" + totalWage;
     }
 
     public static void main(String[] args) {
-
-        System.out.println("Welcome to Employee Wage Computation");
-        CalcWage();
-        System.out.println("Total Wage is: " + CalcWage());
+        EmpWage Infosys = new EmpWage("Infosys",10,2,20);
+        EmpWage Mphasis = new EmpWage("Mphasis", 25,20,85);
+        Infosys.CalcWage();
+        System.out.println(Infosys);
+        Mphasis.CalcWage();
+        System.out.println(Mphasis);
     }
 }
