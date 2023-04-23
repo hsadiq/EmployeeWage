@@ -5,6 +5,8 @@ public class EmpWage{
     public static final int Part_time =1;
     public static final int Full_time =2;
 
+
+
     public static int CalcWage(String Company, int Working_Days, int Monthly_Hour, int Per_Hour_Salary){
         int totalHour=0;
         int totalWorkingDays=0;
