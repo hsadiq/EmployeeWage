@@ -45,3 +45,4 @@ public class EmpWage {
         System.out.println("Total Wage is: " + CalcWage());
     }
 }
+//add to git
