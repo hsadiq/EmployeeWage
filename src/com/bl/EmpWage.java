@@ -70,6 +70,7 @@ public class EmpWage {
         public static void main(String[] args) {
             EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
             empWageBuilder.addCompanyEmpWage("Infosys", 20, 2, 10);
+            empWageBuilder.addCompanyEmpWage("Bridgelabz",30,4,20);
             empWageBuilder.computeWage();
         }
     }
