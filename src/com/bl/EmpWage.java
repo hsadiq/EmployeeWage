@@ -1,46 +1,103 @@
 package com.bl;
 
-public class EmpWage{
+import java.util.ArrayList;
+import java.util.List;
 
-    public static final int Part_time =1;
-    public static final int Full_time =2;
+interface EmpWageBuilder {
+    public void addCompany(String name, int workingDays, int monthlyHour, int perHourSalary);
+    public void computeWage();
+}
 
+class CompanyEmpWage {
+    private final String name;
+    private final int workingDays;
+    private final int monthlyHour;
+    private final int perHourSalary;
+    private int totalWage;
 
+    public CompanyEmpWage(String name, int workingDays, int monthlyHour, int perHourSalary) {
+        this.name = name;
+        this.workingDays = workingDays;
+        this.monthlyHour = monthlyHour;
+        this.perHourSalary = perHourSalary;
+        totalWage = 0;
+    }
 
-    public static int CalcWage(String Company, int Working_Days, int Monthly_Hour, int Per_Hour_Salary){
-        int totalHour=0;
-        int totalWorkingDays=0;
+    public String getName() {
+        return name;
+    }
 
-        int empCheck = (int)(Math.random() * 10) % 3;
+    public int getWorkingDays() {
+        return workingDays;
+    }
 
-        while (totalWorkingDays<=Working_Days && totalHour<=Monthly_Hour) {
-            totalWorkingDays++;
+    public int getMonthlyHour() {
+        return monthlyHour;
+    }
 
-            switch (empCheck) {
-                case Part_time:
-                    totalHour = 4;
-                    break;
-                case Full_time:
-                    totalHour = 8;
-                    break;
-                default:
-                    totalHour = 0;
-                    break;
-            }
-            totalWorkingDays += totalHour;
-        }
-        int totalWage = totalHour * Per_Hour_Salary;
-        System.out.println("Total Employee Salary for " + Company + " is: " + totalWage + "$");
+    public int getPerHourSalary() {
+        return perHourSalary;
+    }
+
+    public int getTotalWage() {
         return totalWage;
     }
 
+    public void setTotalWage(int totalWage) {
+        this.totalWage = totalWage;
+    }
+}
+
+class EmpWage implements EmpWageBuilder {
+
+    private List<CompanyEmpWage> companyEmpWageList;
+
+    public EmpWage() {
+        companyEmpWageList = new ArrayList<>();
+    }
+
+    public void addCompany(String name, int workingDays, int monthlyHour, int perHourSalary) {
+        CompanyEmpWage companyEmpWage = new CompanyEmpWage(name, workingDays, monthlyHour, perHourSalary);
+        companyEmpWageList.add(companyEmpWage);
+    }
+
+    public void computeWage() {
+        for (CompanyEmpWage companyEmpWage : companyEmpWageList) {
+            int totalHour = 0;
+            int totalWorkingDays = 0;
+
+            while (totalWorkingDays <= companyEmpWage.getWorkingDays() && totalHour <= companyEmpWage.getMonthlyHour()) {
+                totalWorkingDays++;
+
+                int empCheck = (int) (Math.random() * 10) % 3;
+
+                switch (empCheck) {
+                    case 1:
+                        totalHour = 4;
+                        break;
+                    case 2:
+                        totalHour = 8;
+                        break;
+                    default:
+                        totalHour = 0;
+                        break;
+                }
+
+                totalWorkingDays += totalHour;
+            }
+
+            int totalWage = totalHour * companyEmpWage.getPerHourSalary();
+            companyEmpWage.setTotalWage(totalWage);
+
+            System.out.println("Total Employee Salary for " + companyEmpWage.getName() + " is: " + totalWage + "$");
+        }
+    }
+
     public static void main(String[] args) {
-
-        System.out.println("Welcome to Employee Wage Computation");
-        CalcWage("Infosys", 2,10,20);
-        CalcWage("Bridgelabz", 5, 80, 40);
-        CalcWage("Tesla", 12,60, 100);
-
-
+        EmpWage empWageBuilder = new EmpWage();
+        empWageBuilder.addCompany("Infosys", 2, 10, 20);
+        empWageBuilder.addCompany("Bridgelabz", 5, 80, 40);
+        empWageBuilder.addCompany("Tesla", 12, 60, 100);
+        empWageBuilder.computeWage();
     }
 }
