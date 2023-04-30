@@ -1,8 +1,6 @@
 package com.bl;
-
-public interface IComputeEmpWage {
-    public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
-
-    public void computeEmpWage();
+interface IEmpWageBuilder {
+    void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
+    void computeEmpWage();
+    int getTotalWage(String company);
 }
-/* added to git; */
